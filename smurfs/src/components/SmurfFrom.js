@@ -14,7 +14,7 @@ class SmurfFrom extends React.Component {
   };
 
   addSmurf = e => {
-    e.preventDefault();
+    // e.preventDefault();
     this.props.addSmurf(this.state);
   };
 
