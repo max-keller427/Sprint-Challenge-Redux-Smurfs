@@ -5,7 +5,8 @@ class SmurfFrom extends React.Component {
   state = {
     name: "",
     age: "",
-    height: ""
+    height: "",
+    id: ""
   };
 
   handleInputChange = e => {
@@ -14,12 +15,13 @@ class SmurfFrom extends React.Component {
 
   addSmurf = e => {
     e.preventDefault();
-    this.props.smurfActions(this.state.addSmurf);
+    this.props.addSmurf(this.state);
   };
 
   render() {
+    console.log(this.props);
     return (
-      <form>
+      <form onSubmit={this.addSmurf}>
         <input
           onChange={this.handleInputChange}
           placeholder="Smurf Name"
@@ -38,7 +40,7 @@ class SmurfFrom extends React.Component {
           value={this.state.age}
           name="age"
         />
-        <button onSubmit={this.addSmurf}>Submit Smurf</button>
+        <button>Submit Smurf</button>
       </form>
     );
   }

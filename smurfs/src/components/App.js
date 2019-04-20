@@ -5,7 +5,7 @@ import { connect } from "react-redux";
 
 import Smurf from "./Smurf";
 import SmurfForm from "./SmurfFrom";
-import smurfActions from "../actions";
+import { smurfActions, addSmurf } from "../actions";
 
 /*
  to wire this component up you're going to need a few things.
@@ -21,6 +21,7 @@ class App extends Component {
   componentDidMount() {
     this.props.smurfActions();
   }
+
   render() {
     return (
       <div className="app">
@@ -35,7 +36,7 @@ class App extends Component {
             />
           );
         })}
-        <SmurfForm />
+        <SmurfForm addSmurf={this.props.addSmurf} />
       </div>
     );
   }
@@ -50,5 +51,5 @@ const mapStateToProps = state => {
 
 export default connect(
   mapStateToProps,
-  { smurfActions }
+  { smurfActions, addSmurf }
 )(App);
