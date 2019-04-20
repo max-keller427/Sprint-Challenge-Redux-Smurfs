@@ -18,10 +18,15 @@ export const FAILURE_SMURF = "FAILURE_SMURF";
    D - deleteSmurf
 */
 
-export const smurfActions = () => dispatch => {
+const smurfActions = () => dispatch => {
   dispatch({ type: FETCHING_SMURF });
   axios
     .get("http://localhost:3333/smurfs")
-    .then(res => dispatch({ type: SUCCESS_SMURF, payload: res.data }))
+    .then(res => {
+      console.log(res);
+      dispatch({ type: SUCCESS_SMURF, payload: res.data });
+    })
     .catch(err => dispatch({ type: FAILURE_SMURF, payload: err }));
 };
+
+export default smurfActions;
